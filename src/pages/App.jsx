@@ -1,8 +1,13 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react';
+import Amplify from 'aws-amplify';
+import config from '../aws-exports';
 import Dashboard from './Dashboard';
 import Menu from '../components/Menu';
+
+Amplify.configure(config);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +38,7 @@ function App() {
           <div className={classes.root}>
             <main className={classes.content}>
               <div className={classes.toolbar} />
+              <AmplifySignOut />
               <Menu />
               <Route exact path='/' component={Dashboard} />   
             </main>
@@ -44,4 +50,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
