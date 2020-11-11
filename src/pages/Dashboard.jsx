@@ -40,12 +40,14 @@ const Dashboard = () => {
         <Fragment>
             <h1>Dashboard</h1>
             <div className={classes.root}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {(data.length === 0 ? <p>No hay seller a quien pagar en esta semana</p>: (
+                    data.map(seller => (
+                        <Card
+                            key={seller.id}
+                            seller = {seller}
+                         />        
+                    ))
+                ))}                
                    
             </div>
         </Fragment>
