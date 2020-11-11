@@ -16,6 +16,13 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = () => {
 
 
+    useEffect(() => {
+
+        console.log('Esto es una prueba useEffect');
+
+    });
+
+
     const classes = useStyles();
     return ( 
         <Fragment>
